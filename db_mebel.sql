@@ -17,4 +17,4 @@ CREATE TABLE IF NOT EXISTS tb_mebel (
   FOREIGN KEY (kategori_id) REFERENCES tb_kategori(id_kategori) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO tb_kategori (nama_kategori) VALUES ('Kursi'),('Meja'),('Lemari');
+INSERT INTO tb_kategori (nama_kategori) VALUES ('Kursi'),('Meja'),('Lemari'),('Meja makan'),('Kursi Belajar');

@@ -18,7 +18,7 @@ class Mebel extends Database {
     }
 
     public function inputMebel($data){
-        $stmt = $this->conn->prepare("INSERT INTO tb_mebel (nama_mebel, harga, stok, kategori_id, deskripsi) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $this->conn->prepare("INSERT INTO tb_mebel (nama_mebel, harga, jumlah_pesan, kategori_id, deskripsi) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("siiis", $data['nama_mebel'], $data['harga'], $data['stok'], $data['kategori_id'], $data['deskripsi']);
         return $stmt->execute();
     }

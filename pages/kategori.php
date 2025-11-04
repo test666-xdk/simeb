@@ -27,7 +27,7 @@ $res = $k->getAllKategori();
     </form>
 
     <table class="table table-striped">
-      <thead><tr><th>#</th><th>Nama Kategori</th><th>Aksi</th></tr></thead>
+      <thead><tr><th>id</th><th>Nama Kategori</th><th>Aksi</th></tr></thead>
       <tbody>
         <?php $i=1; while($row = $res->fetch_assoc()): ?>
           <tr>

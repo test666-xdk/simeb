@@ -3,7 +3,7 @@
 ?>
 <div class="sidebar bg-dark text-light">
   <div class="brand p-3">
-    <h5><img src="/simeb/assets/images/logo.png" alt="" style="height:28px; margin-right:8px;"> SIMEB</h5>
+    <h5><img src="/simeb/assets/images/profil.png" alt="" style="height:28px; margin-right:8px;"> SIMEB</h5>
   </div>
   <ul class="nav flex-column p-2">
     <li class="nav-item"><a class="nav-link text-light" href="/simeb/index.php">Beranda</a></li>

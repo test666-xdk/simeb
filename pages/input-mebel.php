@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save'])){
     <h4>Input Data Mebel</h4>
     <form method="post">
       <div class="form-group">
-        <label>Nama Mebel</label>
+        <label>Nama Produk</label>
         <input required class="form-control" name="nama_mebel">
       </div>
       <div class="form-group">
@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save'])){
         <input required type="number" class="form-control" name="harga" min="0">
       </div>
       <div class="form-group">
-        <label>Stok</label>
+        <label>Jumlah pesan</label>
         <input required type="number" class="form-control" name="stok" min="0" value="1">
       </div>
       <div class="form-group">

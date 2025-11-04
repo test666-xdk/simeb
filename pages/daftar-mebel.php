@@ -6,10 +6,17 @@ include_once '../config/class-mebel.php';
 $mebel = new Mebel();
 
 // Hapus
-if(isset($_GET['delete'])){
-    $id = (int)$_GET['delete'];
-    $mebel->deleteMebel($id);
-    echo '<div class="alert alert-success">Data dihapus.</div>';
+if(isset($_GET['status'])){
+	// Mengecek nilai parameter GET 'status' dan menampilkan alert yang sesuai menggunakan JavaScript
+	if($_GET['status'] == 'inputsuccess'){
+		echo "<script>alert('Data Mebel berhasil ditambahkan.');</script>";
+	} else if($_GET['status'] == 'editsuccess'){
+		echo "<script>alert('Data Mebel berhasil diubah.');</script>";
+	} else if($_GET['status'] == 'deletesuccess'){
+		echo "<script>alert('Data Mebel berhasil dihapus.');</script>";
+	} else if($_GET['status'] == 'deletefailed'){
+		echo "<script>alert('Gagal menghapus data Mebel. Silakan coba lagi.');</script>";
+	}
 }
 
 $res = $mebel->getAllMebel();
@@ -18,18 +25,20 @@ $res = $mebel->getAllMebel();
   <div class="card p-3">
     <h4>Daftar Mebel</h4>
     <table class="table table-striped">
-      <thead><tr><th>#</th><th>Nama</th><th>Harga</th><th>Stok</th><th>Kategori</th><th>Aksi</th></tr></thead>
+      <thead><tr><th>#</th><th>Nama</th><th>Harga</th><th>Jumlah pesan</th><th>kategori</th><th>Aksi</th></tr></thead>
       <tbody>
         <?php $i=1; while($row = $res->fetch_assoc()): ?>
           <tr>
             <td><?php echo $i++;?></td>
             <td><?php echo htmlspecialchars($row['nama_mebel']);?></td>
             <td><?php echo number_format($row['harga'],0,',','.');?></td>
-            <td><?php echo $row['stok'];?></td>
+            <td><?php echo $row['jumlah_pesan'];?></td>
             <td><?php echo $row['nama_kategori'];?></td>
             <td>
-              <!-- Edit simple: link to same page could be implement later -->
-              <a class="btn btn-sm btn-danger" href="?delete=<?php echo $row['id_mebel'];?>" onclick="return confirm('Yakin ingin hapus?')">Hapus</a>
+             <button type="button" class="btn btn-primary" onclick="window.location.href='input-mebel.php'">
+             <i class="bi bi-plus-lg"></i> Hapus
+             </button>
+             </div>
             </td>
           </tr>
         <?php endwhile; ?>
@@ -37,4 +46,13 @@ $res = $mebel->getAllMebel();
     </table>
   </div>
 </div>
+<div clas="card-footer">
+ <button type="button" class="btn btn-primary" onclick="window.location.href='input-mebel.php'">
+  <i class="bi bi-plus-lg"></i> Tambah Mebel
+</button>
+</div>
+<br>
+<div>
+  <button type="button" class="btn btn-primary" onclick="window.location.href='input-mebel.php'">
+  <i class="bi bi-plus-lg"></i> edit Mebel
 <?php include_once '../includes/footer.php'; ?>
