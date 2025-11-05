@@ -19,7 +19,7 @@ if(isset($_GET['status'])){
 	}
 }
 
-$res = $mebel->getAllMebel();
+$mebel = $mebel->getAllMebel();
 ?>
 <div class="container">
   <div class="card p-3">
