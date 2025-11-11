@@ -19,7 +19,7 @@ if(isset($_GET['status'])){
 	}
 }
 
-$mebel = $mebel->getAllMebel();
+$res = $mebel->getAllMebel();
 ?>
 <div class="container">
   <div class="card p-3">
@@ -35,9 +35,9 @@ $mebel = $mebel->getAllMebel();
             <td><?php echo $row['jumlah_pesan'];?></td>
             <td><?php echo $row['nama_kategori'];?></td>
             <td>
-             <button type="button" class="btn btn-primary" onclick="window.location.href='input-mebel.php'">
-             <i class="bi bi-plus-lg"></i> Hapus
-             </button>
+             <a href="daftar-mebel.php?hapus=<?php echo $row['id_mebel']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">
+             <i class="bi bi-trash"></i> Hapus
+              </a>
              </div>
             </td>
           </tr>
