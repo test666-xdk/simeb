@@ -4,6 +4,22 @@ include_once '../includes/sidebar.php';
 include_once '../config/class-mebel.php';
 
 $mebel = new Mebel();
+if(isset($_GET['hapus']) && is_numeric($_GET['hapus'])){
+    $id_mebel_hapus = $_GET['hapus'];
+    
+    // Asumsikan class Mebel memiliki method deleteMebel($id)
+    $result = $mebel->deleteMebel($id_mebel_hapus); 
+
+    if ($result) {
+        // Berhasil dihapus, redirect dengan status success
+        header("Location: daftar-mebel.php?status=deletesuccess");
+        exit;
+    } else {
+        // Gagal dihapus, redirect dengan status failed
+        header("Location: daftar-mebel.php?status=deletefailed");
+        exit;
+    }
+}
 
 // Hapus
 if(isset($_GET['status'])){
@@ -20,6 +36,21 @@ if(isset($_GET['status'])){
 }
 
 $res = $mebel->getAllMebel();
+if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
+    $id_mebel_edit = $_GET['edit'];
+    
+    // Asumsikan class Mebel memiliki method getMebelById($id)
+    $data_mebel = $mebel->getMebelById($id_mebel_edit);
+    
+    // Jika data ditemukan, ubah mode
+    if ($data_mebel) {
+        $mode = "Edit";
+    } else {
+        // Jika ID tidak valid atau data tidak ditemukan, kembalikan ke daftar
+        header("Location: daftar-mebel.php");
+        exit;
+    }
+}
 ?>
 <div class="container">
   <div class="card p-3">
@@ -48,7 +79,7 @@ $res = $mebel->getAllMebel();
 </div>
 <div clas="card-footer">
  <button type="button" class="btn btn-primary" onclick="window.location.href='input-mebel.php'">
-  <i class="bi bi-plus-lg"></i> Tambah Mebel
+  <i class="bi bi-plus-lg"></i> +Tambah Mebel
 </button>
 </div>
 <br>
